@@ -9,6 +9,7 @@ struct spinlock;
 struct sleeplock;
 struct stat;
 struct superblock;
+#include "uproc.h"
 
 // bio.c
 void            binit(void);
@@ -129,6 +130,9 @@ void            printFreeList(void);
 void            printList(int);
 void            printListStats(void);
 #endif // CS333_P3
+#ifdef CS333_P2
+int getprocshelper(uint max,struct uproc * table);
+#endif
 
 // swtch.S
 void            swtch(struct context**, struct context*);
@@ -164,6 +168,11 @@ int             argstr(int, char**);
 int             fetchint(uint, int*);
 int             fetchstr(uint, char**);
 void            syscall(void);
+#ifdef CS333_P4
+int             setpriority(int pid,int priority);
+int             getpriority(int pid);
+#endif
+
 
 // timer.c
 void            timerinit(void);
